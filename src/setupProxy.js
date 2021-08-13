@@ -2,13 +2,13 @@ const {createProxyMiddleware} = require('http-proxy-middleware');
 
 module.exports = function(app) {
   app.use(createProxyMiddleware('/api', {
-    target: 'https://localhost:3001',
+    target: 'http://localhost:3000',
     secure: false, //是否验证SSL证书
     changeOrigin: true, //将主机头的源更改为目标URL
     pathRewrite: {
-      "^/api": "/"
+      "^/api": ""
     },
-    logLevel: 'debug'
+    // logLevel: 'debug'
   }));
 }
 
