@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.scss';
 import MyContext from "./context/user";
+import {initState, reducer} from "./context/reducer";
 import Children from "./components/Children";
-import { useContext }  from "react";
+import { useReducer }  from "react";
 function App() {
-  const value = useContext(MyContext);
+  const [state, dispatch] = useReducer(reducer, initState);
+  console.log(state)
   return (
-    <MyContext.Provider className="App" value={value}>
+    <MyContext.Provider className="App" value={{state, dispatch}}>
       <Children/>
     </MyContext.Provider>
   );

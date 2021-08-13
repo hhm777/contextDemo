@@ -1,3 +1,3 @@
 import { createContext,  useContext } from "react";
-const MyContext = createContext({name: 1, age: 21});
+const MyContext = createContext(null);
 export default MyContext;
