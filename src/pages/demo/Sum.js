@@ -1,12 +1,10 @@
-import React,{ useContext, useMemo }  from "react";
-import MyContext from "../context/user";
+import { useContext, useMemo }  from "react";
+import MyContext from "@/context/user";
 import {useParams} from "react-router-dom";
-function Children(props) {
-  console.log('children render')
+function Sum() {
   const {state, dispatch} = useContext(MyContext);
   const {id} = useParams();
   return useMemo(() =>{
-    console.log('children render1')
     return (
       <div className="test-box">
         <div>children:{id}</div>
@@ -15,6 +13,6 @@ function Children(props) {
         <div onClick={() =>dispatch({type: "GET_SUM"})} className="test-btn">{state.sum}</div>
       </div>
     )
-  }, [state.num1, state.num2, state.sum, dispatch])
+  }, [id, state.num1, state.num2, state.sum, dispatch])
 }
-export default Children;
+export default Sum;

@@ -1,31 +1,32 @@
-import {Router, Switch, Route, Redirect, Link} from "react-router-dom";
-import { createBrowserHistory } from "history";
-import Login from "../pages/Login";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Lost from "../pages/404";
-import Children from "../pages/Children";
-import React from "react";
+import {Router, Switch, Route, Redirect} from "react-router-dom";
+import {createBrowserHistory} from "history";
+import Login from "@/pages/login/Login";
+import Layout from "@/layout/Layout";
+import {connect} from "react-redux";
 const history = createBrowserHistory();
 
-const DefaultRouter = function () {
-  console.log(history)
+const DefaultRouter = function (props) {
+  const {token} = props;
   return (
     <Router history={history}>
-      <ul>
-        <li><Link to="/home">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/login">Login</Link></li>
-      </ul>
       <Switch>
-        <Redirect exact from="/" to="/home" />
         <Route exact path="/login" component={Login}/>
-        <Route exact path="/home" component={Home}/>
-        <Route path="/about" render={() => <About/>}/>
-        <Route exact path="/children/:id" component={Children}/>
-        <Route exact path="/lost" component={Lost}/>
+        <Route
+          path="/"
+          render={() => {
+            if (!token) {
+              return <Redirect to="/login" />;
+            } else {
+              return <Layout />;
+            }
+          }}
+        />
       </Switch>
     </Router>
   )
 }
-export default DefaultRouter;
+export default connect(state => {
+  return {
+    ...state.user
+  }
+})(DefaultRouter)

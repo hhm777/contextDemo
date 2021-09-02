@@ -1,15 +1,20 @@
-import './App.scss';
-import MyContext from "./context/user";
-import {initState, reducer} from "./context/reducer";
-import Router from "./router/router";
-import { useReducer }  from "react";
+import {ConfigProvider, Spin} from "antd";
+import zhCN from 'antd/lib/locale/zh_CN';
+import Router from "@/router/router";
+import {Provider} from "react-redux";
+import store, { persistor }from "@/store/store"
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import '@/App.scss';
+
 function App() {
-  const [state, dispatch] = useReducer(reducer, initState);
-  console.log(state)
   return (
-    <MyContext.Provider className="App" value={{state, dispatch}}>
-      <Router/>
-    </MyContext.Provider>
+    <ConfigProvider locale={zhCN}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router />
+        </PersistGate>
+      </Provider>
+    </ConfigProvider>
   );
 }
 

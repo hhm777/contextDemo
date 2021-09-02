@@ -1,5 +1,5 @@
 export const initState = {num1: 0, num2: 0, sum: 0};
-export const reducer = (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_NUM1":
       return {
@@ -16,5 +16,8 @@ export const reducer = (state, action) => {
         ...state,
         sum: state.num1 + state.num2
       }
+    default:
+      state
   }
 }
+export default reducer;

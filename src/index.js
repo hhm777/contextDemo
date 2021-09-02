@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
+import "antd/dist/antd.css";
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
-console.log(process.env["REACT_APP_MSG"])
+console.log("REACT_APP_ENV:")
+console.log(process.env["REACT_APP_ENV"])
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App />,
   document.getElementById('root')
 );
 

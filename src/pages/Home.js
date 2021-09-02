@@ -1,12 +1,6 @@
-import React from "react";
-
-const Home =function (props){
-  const {history} = props;
-  console.log(history)
+const Home = () => {
   return (
-    <div>Home <br/>
-      <button onClick={() => history?.push("/children/123")}>go children</button>
-    </div>
+    <div>Home</div>
   )
 }
 export default Home;
