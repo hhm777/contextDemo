@@ -1,6 +1,9 @@
+import ContainerBox from "../components/CloneComp";
+
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>Home
+      <ContainerBox/></div>
   )
 }
 export default Home;

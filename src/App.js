@@ -1,4 +1,4 @@
-import {ConfigProvider, Spin} from "antd";
+import {ConfigProvider} from "antd";
 import zhCN from 'antd/lib/locale/zh_CN';
 import Router from "@/router/router";
 import {Provider} from "react-redux";
