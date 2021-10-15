@@ -1,9 +1,7 @@
-const {override, addWebpackAlias, fixBabelImports} = require("customize-cra");
-const path = require("path");
+const {override, fixBabelImports} = require("customize-cra");
+const { alias, configPaths } = require('react-app-rewire-alias');
 module.exports = override(
-  addWebpackAlias({
-    "@": path.resolve(__dirname, "src")
-  }),
+  alias(configPaths('./paths.json')),
   // 针对antd实现按需打包: 根据import来打包(使用babel-plugin-import)
   fixBabelImports("import", {
     libraryName: "antd",

@@ -6,6 +6,7 @@ import store, { persistor }from "@/store/store"
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import '@/App.scss';
 
+
 function App() {
   return (
     <ConfigProvider locale={zhCN}>
